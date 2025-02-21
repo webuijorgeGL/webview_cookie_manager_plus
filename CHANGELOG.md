@@ -1,3 +1,7 @@
+## 2.0.8
+
+* Add Flutter 3.29.0 and AGP 8 support 
+
 ## 2.0.7
 
 * Add missing namespace parameter 

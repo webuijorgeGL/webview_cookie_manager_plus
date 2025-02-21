@@ -1,13 +1,13 @@
-name: webview_cookie_manager
-description: Have you been turned into a cookie management problem? This package can help. It has all of the cookie management functionality you have been looking for.
-version: 2.0.7
-repository: https://github.com/fryette/webview_cookie_manager
-homepage: https://github.com/fryette/webview_cookie_manager
-issue_tracker: https://github.com/fryette/webview_cookie_manager/issues
+name: webview_cookie_manager_plus
+description: "Have you been turned into a cookie management problem? This package can help. It has all of the cookie management functionality you have been looking for. This is a fork from webview_cookie_manager since this package has no maintenance."
+version: 2.0.8
+repository: https://github.com/webuijorgeGL/webview_cookie_manager_plus.git
+homepage: https://github.com/webuijorgeGL/webview_cookie_manager_plus.git
+issue_tracker: https://github.com/webuijorgeGL/webview_cookie_manager_plus/issues
 
 environment:
-  sdk: '>=3.0.5 <4.0.0'
-  flutter: ">=1.10.0"
+  sdk: '>=3.7.0 <4.0.0'
+  flutter: ">=3.29.0"
 
 dependencies:
   flutter:
