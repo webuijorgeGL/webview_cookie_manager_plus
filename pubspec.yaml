@@ -1,6 +1,6 @@
 name: webview_cookie_manager_plus
 description: "Fork of webview_cookie_manager with full cookie management support. Helps handle cookies in WebView efficiently. Maintained and updated for better compatibility."
-version: 2.0.8
+version: 2.0.9
 repository: https://github.com/webuijorgeGL/webview_cookie_manager_plus.git
 homepage: https://github.com/webuijorgeGL/webview_cookie_manager_plus.git
 issue_tracker: https://github.com/webuijorgeGL/webview_cookie_manager_plus/issues
