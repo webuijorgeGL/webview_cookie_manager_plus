@@ -1,3 +1,7 @@
+## 2.0.10
+
+* Replaced Android Register to FlutterPluginBinding for initialization
+
 ## 2.0.9
 
 * Updated Readme and some missing descriptions
