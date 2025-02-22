@@ -46,16 +46,7 @@ public class WebviewCookieManagerPlugin implements FlutterPlugin, MethodCallHand
 
     private static void hasCookies(final Result result) {
         CookieManager cookieManager = CookieManager.getInstance();
-        if (Build.VERSION.SDK_INT >= VERSION_CODES.LOLLIPOP) {
-            cookieManager.hasCookies(new ValueCallback<Boolean>() {
-                @Override
-                public void onReceiveValue(Boolean value) {
-                    result.success(value);
-                }
-            });
-        } else {
-            result.success(cookieManager.hasCookies());
-        }
+        result.success(cookieManager.hasCookies());  // No callback needed
     }
 
     private static void clearCookies(final Result result) {
