@@ -1,3 +1,7 @@
+## 2.0.12
+
+* Housekeeping - removed deprecated methods
+
 ## 2.0.11
 
 * Fixed some warnings related to already definitions and methods

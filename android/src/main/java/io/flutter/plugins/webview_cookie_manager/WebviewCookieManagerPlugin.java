@@ -37,20 +37,7 @@ public class WebviewCookieManagerPlugin implements FlutterPlugin, MethodCallHand
     /// when the Flutter Engine is detached from the Activity
     private MethodChannel channel;
 
-    // This static function is optional and equivalent to onAttachedToEngine. It supports the old
-    // pre-Flutter-1.12 Android projects. You are encouraged to continue supporting
-    // plugin registration via this function while apps migrate to use the new Android APIs
-    // post-flutter-1.12 via https://flutter.dev/go/android-project-migration.
-    //
-    // It is encouraged to share logic between onAttachedToEngine and registerWith to keep
-    // them functionally equivalent. Only one of onAttachedToEngine or registerWith will be called
-    // depending on the user's project. onAttachedToEngine or registerWith must both be defined
-    // in the same class.
-    //public static void registerWith(Registrar registrar) {
-       // final MethodChannel channel = new MethodChannel(registrar.messenger(), "webview_cookie_manager");
-       // channel.setMethodCallHandler(new WebviewCookieManagerPlugin());
-    //}
-
+   //migrated to onAttachedToEngine, so you the plugin doesn’t need registerWith anymore.
 
     private void setupChannel(BinaryMessenger messenger) {
         channel = new MethodChannel(messenger, "webview_cookie_manager");
@@ -59,25 +46,31 @@ public class WebviewCookieManagerPlugin implements FlutterPlugin, MethodCallHand
 
     private static void hasCookies(final Result result) {
         CookieManager cookieManager = CookieManager.getInstance();
-        final boolean hasCookies = cookieManager.hasCookies();
-        result.success(hasCookies);
+        if (Build.VERSION.SDK_INT >= VERSION_CODES.LOLLIPOP) {
+            cookieManager.hasCookies(new ValueCallback<Boolean>() {
+                @Override
+                public void onReceiveValue(Boolean value) {
+                    result.success(value);
+                }
+            });
+        } else {
+            result.success(cookieManager.hasCookies());
+        }
     }
 
     private static void clearCookies(final Result result) {
         CookieManager cookieManager = CookieManager.getInstance();
-        final boolean hasCookies = cookieManager.hasCookies();
         if (Build.VERSION.SDK_INT >= VERSION_CODES.LOLLIPOP) {
-            cookieManager.removeAllCookies(
-                    new ValueCallback<Boolean>() {
-                        @Override
-                        public void onReceiveValue(Boolean value) {
-                            result.success(hasCookies);
-                        }
-                    });
+            cookieManager.removeAllCookies(new ValueCallback<Boolean>() {
+                @Override
+                public void onReceiveValue(Boolean value) {
+                    result.success(value);
+                }
+            });
             cookieManager.flush();
         } else {
             cookieManager.removeAllCookie();
-            result.success(hasCookies);
+            result.success(true);
         }
     }
 
