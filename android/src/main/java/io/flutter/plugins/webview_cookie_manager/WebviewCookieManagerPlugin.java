@@ -51,22 +51,10 @@ public class WebviewCookieManagerPlugin implements FlutterPlugin, MethodCallHand
        // channel.setMethodCallHandler(new WebviewCookieManagerPlugin());
     //}
 
-    @Override
-    public void onAttachedToEngine(@NonNull FlutterPluginBinding binding) {
-        setupChannel(binding.getBinaryMessenger());
-    }
-
-    @Override
-    public void onDetachedFromEngine(@NonNull FlutterPluginBinding binding) {
-        if (channel != null) {
-            channel.setMethodCallHandler(null);
-            channel = null;
-        }
-    }
 
     private void setupChannel(BinaryMessenger messenger) {
         channel = new MethodChannel(messenger, "webview_cookie_manager");
-        channel.setMethodCallHandler(new WebviewCookieManagerMethodCallHandler());
+        channel.setMethodCallHandler(new WebviewCookieManagerPlugin());
     }
 
     private static void hasCookies(final Result result) {
@@ -186,9 +174,8 @@ public class WebviewCookieManagerPlugin implements FlutterPlugin, MethodCallHand
     }
 
     @Override
-    public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
-        channel = new MethodChannel(flutterPluginBinding.getBinaryMessenger(), "webview_cookie_manager");
-        channel.setMethodCallHandler(this);
+    public void onAttachedToEngine(@NonNull FlutterPluginBinding binding) {
+        setupChannel(binding.getBinaryMessenger());
     }
 
     @Override
@@ -213,7 +200,9 @@ public class WebviewCookieManagerPlugin implements FlutterPlugin, MethodCallHand
 
     @Override
     public void onDetachedFromEngine(@NonNull FlutterPluginBinding binding) {
-        channel.setMethodCallHandler(null);
-        channel = null;
+        if (channel != null) {
+            channel.setMethodCallHandler(null);
+            channel = null;
+        }
     }
 }
