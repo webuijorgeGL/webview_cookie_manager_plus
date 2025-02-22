@@ -3,7 +3,7 @@
 # Run `pod lib lint webview_cookie_manager.podspec' to validate before publishing.
 #
 Pod::Spec.new do |s|
-  s.name             = 'webview_cookie_manager'
+  s.name             = 'webview_cookie_manager_plus'
   s.version          = '0.0.1'
   s.summary          = 'A new flutter plugin project.'
   s.description      = <<-DESC
