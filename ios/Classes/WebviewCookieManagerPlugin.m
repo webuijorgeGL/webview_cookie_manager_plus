@@ -1,6 +1,6 @@
 #import "WebviewCookieManagerPlugin.h"
-#if __has_include(<webview_cookie_manager/webview_cookie_manager-Swift.h>)
-#import <webview_cookie_manager/webview_cookie_manager-Swift.h>
+#if __has_include(<webview_cookie_manager_plus/webview_cookie_manager-Swift.h>)
+#import <webview_cookie_manager_plus/webview_cookie_manager-Swift.h>
 #else
 // Support project import fallback if the generated compatibility header
 // is not copied when this plugin is created as a library.

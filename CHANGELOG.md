@@ -1,3 +1,7 @@
+## 2.0.15
+
+* Added ios compability
+
 ## 2.0.14
 
 * Added ios compability
