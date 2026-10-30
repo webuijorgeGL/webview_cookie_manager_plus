@@ -1,3 +1,8 @@
+## 2.0.18
+
+* Added Swift Package Manager support on iOS
+* Allowed arm64 iOS simulators; the podspec no longer limits simulator builds to x86_64
+
 ## 2.0.16
 
 * Added ios compability

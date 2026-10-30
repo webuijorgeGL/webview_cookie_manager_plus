@@ -3,14 +3,14 @@ import UIKit
 import WebKit
 
 @available(iOS 11.0, *)
-public class SwiftWebviewCookieManagerPlugin: NSObject, FlutterPlugin {
+public class WebviewCookieManagerPlugin: NSObject, FlutterPlugin {
     static var httpCookieStore: WKHTTPCookieStore?
     
   public static func register(with registrar: FlutterPluginRegistrar) {
     httpCookieStore = WKWebsiteDataStore.default().httpCookieStore
     
     let channel = FlutterMethodChannel(name: "webview_cookie_manager", binaryMessenger: registrar.messenger())
-    let instance = SwiftWebviewCookieManagerPlugin()
+    let instance = WebviewCookieManagerPlugin()
     registrar.addMethodCallDelegate(instance, channel: channel)
   }
 
@@ -19,17 +19,17 @@ public class SwiftWebviewCookieManagerPlugin: NSObject, FlutterPlugin {
         case "getCookies":
             let arguments = call.arguments as! NSDictionary
             let url = arguments["url"] as? String
-            SwiftWebviewCookieManagerPlugin.getCookies(urlString: url, result: result)
+            WebviewCookieManagerPlugin.getCookies(urlString: url, result: result)
             break
         case "setCookies":
             let cookies = call.arguments as! Array<NSDictionary>
-            SwiftWebviewCookieManagerPlugin.setCookies(cookies: cookies, result: result)
+            WebviewCookieManagerPlugin.setCookies(cookies: cookies, result: result)
             break
         case "hasCookies":
-            SwiftWebviewCookieManagerPlugin.hasCookies(result: result)
+            WebviewCookieManagerPlugin.hasCookies(result: result)
             break
         case "clearCookies":
-            SwiftWebviewCookieManagerPlugin.clearCookies(result: result)
+            WebviewCookieManagerPlugin.clearCookies(result: result)
             break
         default:
             result(FlutterMethodNotImplemented)

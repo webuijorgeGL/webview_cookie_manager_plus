@@ -6,7 +6,7 @@
 //
 
 import XCTest
-import webview_cookie_manager
+import webview_cookie_manager_plus
 
 class webview_cookie_manager_exampleTests: XCTestCase {
     override class func setUp() {
@@ -19,6 +19,6 @@ class webview_cookie_manager_exampleTests: XCTestCase {
 
     func testCookieWithoutDomainAttribute() throws {
         let cookie = ["name": "cookie_name", "value": "cookie_value"] as NSDictionary
-        SwiftWebviewCookieManagerPlugin.setCookies(cookies: [cookie], result: { _ in })
+        WebviewCookieManagerPlugin.setCookies(cookies: [cookie], result: { _ in })
     }
 }
